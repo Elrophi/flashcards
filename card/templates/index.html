@@ -1,11 +1,13 @@
 
-<form action="">
-    {{form}}
+<form action="/" method="POST">
+    {{form.title}}
+    {%csrf_token%}
     <input type="submit" value="add">
 </form>
 
 {%for card in cards %}
     <div>
+        <a href="{% url 'update_card' card.id%}">Update</a>
         <p>{{card}}</p>
     </div>
 
