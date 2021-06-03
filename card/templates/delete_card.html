@@ -1,3 +1,6 @@
 <p>Are you sure? "{{item}}"</p>
-
+<form action="" method="POST">
+    {%csrf_token%}
+    <input type="submit" name="confirm" >
+</form>
 <a href="{% url 'index' %}">Cancel</a>

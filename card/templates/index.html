@@ -9,6 +9,11 @@
     <div>
         <a href="{% url 'update_card' card.id%}">Update</a>
         <a href="{% url 'delete_card' card.id%}">Delete</a>
+        {% if card.complete == True %}
+        <strike>{{card}}</strike>
+        {%else%}
+        <span>{{card}}</span>
+        {%endif%}
         <p>{{card}}</p>
     </div>
 

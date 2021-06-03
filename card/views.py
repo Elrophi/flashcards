@@ -34,5 +34,9 @@ def updateCard(request, pk):
 def deleteCard(request, pk):
     item = Card.objects.get(id=pk)
 
+    if request.method == 'POST':
+        item.delete()
+        return redirect('/')
+
     context={'item':item}
     return(request, 'delet_card.html')
