@@ -21,4 +21,18 @@ def index(request):
 def updateCard(request, pk):
     card = Card.object.get(id=pk)
 
-    return(request, 'update_card.html')
+    form = CardForm(instance=card)
+    if request.method == 'POST':
+        form = CardForm(request.POST, instance=card)
+        if form.is_valid():
+            form.save()
+
+    context={'form':form}
+
+    return(request, 'update_card.html', context)
+
+def deleteCard(request, pk):
+    item = Card.objects.get(id=pk)
+
+    context={'item':item}
+    return(request, 'delet_card.html')
